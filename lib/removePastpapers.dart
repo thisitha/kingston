@@ -167,25 +167,6 @@ class _removePastpapersState extends State<removePastpapers> {
                     height: 20,
                   ),
 
-
-                  // Container(
-                  //   color: Colors.red,
-                  //   alignment: Alignment.center,
-                  //   width: MediaQuery.of(context).size.width/2,
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.all(8.0),
-                  //     child: Row(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         Icon(Icons.downloading),
-                  //         Text(
-                  //             "View Old Papers"
-                  //         ),
-                  //         SizedBox(width: 10,),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),)
             ],

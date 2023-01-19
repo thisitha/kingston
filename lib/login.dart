@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kingston/findPastPapers.dart';
+
+TextEditingController userNameController = new TextEditingController();
+TextEditingController passwordController = new TextEditingController();
 
 class loginScreen extends StatefulWidget {
   const loginScreen({Key? key}) : super(key: key);
@@ -36,6 +40,7 @@ class _loginScreenState extends State<loginScreen> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextField(
+                controller: userNameController,
                 style:  TextStyle(color: Colors.white),
                 decoration: new InputDecoration.collapsed(
                     hintText: 'Username',
@@ -46,6 +51,7 @@ class _loginScreenState extends State<loginScreen> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: TextField(
+                controller: passwordController,
                 style:  TextStyle(color: Colors.white),
                 decoration: new InputDecoration.collapsed(
                   hintStyle:  TextStyle(color: Colors.white),
@@ -55,7 +61,8 @@ class _loginScreenState extends State<loginScreen> {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => findPastPapers(),));
+                loginUser(userNameController.text, passwordController.text,context);
+                 //Navigator.push(context, MaterialPageRoute(builder: (context) => findPastPapers(),));
               },
               child: Container(
                 alignment: Alignment.center,
@@ -75,5 +82,25 @@ class _loginScreenState extends State<loginScreen> {
         ),
       ),
     );
+  }
+}
+
+Future<void> loginUser(String email, String password,BuildContext context) async {
+  print("method called");
+  try {
+    final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password
+    );
+    if(credential.user?.uid!=null){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => findPastPapers(),));
+      print(credential.user?.uid.toString());
+    }
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      print('No user found for that email.');
+    } else if (e.code == 'wrong-password') {
+      print('Wrong password provided for that user.');
+    }
   }
 }

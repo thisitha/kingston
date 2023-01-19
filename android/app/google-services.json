@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "726381401957",
+    "project_id": "kingston-2398e",
+    "storage_bucket": "kingston-2398e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726381401957:android:0cea03ed45960fe13e338c",
+        "android_client_info": {
+          "package_name": "com.shashanka.kingston"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726381401957-7ov1p0tb8sqegne2aa5518vavcl1gjr3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shashanka.kingston",
+            "certificate_hash": "181998b6c82c660f022e9a8d2ff6f2a2e8551e25"
+          }
+        },
+        {
+          "client_id": "726381401957-jgn9c2ioeg54ghu92ccql2o6rcmi6le5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAELIldW3RZeXa3w9SBZYEYT_6B57c6oI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726381401957-jgn9c2ioeg54ghu92ccql2o6rcmi6le5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
