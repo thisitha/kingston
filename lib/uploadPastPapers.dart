@@ -1,6 +1,9 @@
 
 
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 List<DropdownMenuItem<String>> batch = [
@@ -31,8 +34,23 @@ class uploadpastpapers extends StatefulWidget {
 }
 
 class _uploadpastpapersState extends State<uploadpastpapers> {
+
   @override
   Widget build(BuildContext context) {
+    Future<void> pickFile() async {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+      if (result != null) {
+        File file = File(result.files.single.path.toString());
+        FirebaseStorage storage = FirebaseStorage.instance;
+        storage.ref(file.path).putFile(
+          file,
+        );
+      } else {
+        print("ex");
+        // User canceled the picker
+      }
+    }
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff04045b),
@@ -60,15 +78,20 @@ class _uploadpastpapersState extends State<uploadpastpapers> {
               ),
               Container(child: Column(
                 children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Upload Past Papers",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20
+                  GestureDetector(
+                onTap: (){
+                  pickFile();
+                },
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Upload Past Papers",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20
+                          ),
                         ),
                       ),
                     ),
