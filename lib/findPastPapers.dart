@@ -55,9 +55,9 @@ class _findPastPapersState extends State<findPastPapers> {
               Row(
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width/10,
-                    height:  MediaQuery.of(context).size.width/10,
-                    color: Colors.red,
+                    width: MediaQuery.of(context).size.width/7,
+
+                    child: Image.asset("assets/kingston.png"),
                   ),
                   Spacer(),
                   GestureDetector(
@@ -92,6 +92,7 @@ class _findPastPapersState extends State<findPastPapers> {
                   padding: const EdgeInsets.all(8.0),
                   child: DropdownButton(
                     value: selectedBatch,
+                    style: TextStyle(color:Colors.white),
                     hint: Text("Select Your Batch",
                     style: TextStyle(color:Colors.white)),
                       items: batch,
@@ -105,6 +106,7 @@ class _findPastPapersState extends State<findPastPapers> {
                     padding: const EdgeInsets.all(8.0),
                     child: DropdownButton(
                       value: selectedSubject,
+                      style: TextStyle(color:Colors.white),
                       hint: Text("Select Your Subject",
                       style: TextStyle(color: Colors.white),),
                       items: subject,
@@ -118,6 +120,7 @@ class _findPastPapersState extends State<findPastPapers> {
                     padding: const EdgeInsets.all(8.0),
                     child: DropdownButton(
                       value: selectedYear,
+                      style: TextStyle(color:Colors.white),
                       hint: Text("Select Your Year",
                           style: TextStyle(color: Colors.white)),
                       items: year,
